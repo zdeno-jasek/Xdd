@@ -36,7 +36,7 @@ final class ObjednavkyNaDenRepositoryInMemory implements ObjednavkyNaDenReposito
 			dnes = LocalDate.now();
 			objednavkyNaDnes = new ObjednavkyNaDen( dnes );
 			objednavkyNaDnes.objednaj( new Objednavka( new Osoba( "Albert", "Einstein" ), TerminObjednavkyFactory.create( 10, 00 ) ) );
-			objednavkyNaDnes.objednaj( new Objednavka(new Osoba( "Issac", "Newton" ), TerminObjednavkyFactory.create( 11, 00 ) ) );
+			objednavkyNaDnes.objednaj( new Objednavka( new Osoba( "Issac", "Newton" ), TerminObjednavkyFactory.create( 11, 00 ) ) );
 			objednavkyNaDnes.objednaj( new Objednavka( new Osoba( "Niels", "Bohr" ), TerminObjednavkyFactory.create( 12, 30 ) ) );
 		}
 		return objednavkyNaDnes;
