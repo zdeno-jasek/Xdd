@@ -2,8 +2,6 @@ package sk.posam.objednavky.domain.objednavka;
 
 import java.time.Duration;
 import java.time.LocalTime;
-import java.time.temporal.TemporalUnit;
-import java.util.Formatter;
 
 /**
  * Trieda drží základné informácie o termíne objednávky, t.j. presný čas objednávky
