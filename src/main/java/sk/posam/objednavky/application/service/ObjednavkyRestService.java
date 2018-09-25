@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import sk.posam.objednavky.domain.objednavka.ObjednavkyNaDen;
 import sk.posam.objednavky.domain.objednavka.ObjednavkyNaDenRepository;
+import sk.posam.objednavky.domain.objednavka.TerminObjednavky;
+import sk.posam.objednavky.domain.objednavka.TerminObjednavkyFactory;
 
 /**
  * Služba, ktorá implementuje restové API. Táto trieda neobsahuje žiadnu
@@ -38,7 +40,9 @@ public class ObjednavkyRestService {
 	// http://localhost:8080/objednavka/volno?hodina=5&minuta=6
 	@RequestMapping(method=RequestMethod.GET, value="volno")
 	public boolean jeVolno( int hodina, int minuta ) {
-		return hodina == minuta; // TODO toto je bug, treba to fixnut
+		ObjednavkyNaDen objednavkyNaDen = repository.read( LocalDate.now() );
+		TerminObjednavky termin = TerminObjednavkyFactory.create(hodina, minuta);
+		return objednavkyNaDen.jeVolno(termin);
 	}
 
 	// http://localhost:8080/objednavka/objednanyKto?hodina=10&minuta=15

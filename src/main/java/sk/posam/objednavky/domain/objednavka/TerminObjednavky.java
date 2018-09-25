@@ -27,5 +27,14 @@ public class TerminObjednavky {
 	public LocalTime getCas() {
 		return cas;
 	}
+
+	public boolean prekryvaSa(TerminObjednavky terminObjednavky) {
+		LocalTime cas1Zaciatok = this.cas;
+		LocalTime cas1Koniec = cas1Zaciatok.plus(this.dlzka);
+		LocalTime cas2Zaciatok = terminObjednavky.cas;
+		LocalTime cas2Koniec = cas2Zaciatok.plus(terminObjednavky.dlzka);
+		// https://stackoverflow.com/a/17107966/146745
+		return cas1Zaciatok.isBefore(cas2Koniec) && cas2Zaciatok.isBefore(cas1Koniec);
+	}
 	
 }

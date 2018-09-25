@@ -9,7 +9,7 @@ import java.time.LocalTime;
  */
 public final class TerminObjednavkyFactory {
 	
-	private final static Duration STANDARDNA_DLZKA_OBJEDNAVKY_V_MINUTACH = Duration.ofMinutes( 30 );
+	private final static Duration STANDARDNA_DLZKA_OBJEDNAVKY_V_MINUTACH = Duration.ofMinutes( 29 );
 
 	/**
 	 * Metóda vytvorí termín objednávky pre danú hodinu a minútu

@@ -27,5 +27,9 @@ public class Objednavka {
 	public Osoba getOsoba() {
 		return osoba;
 	}
-	
+
+	public boolean terminJeObsadeny(TerminObjednavky termin) {
+		return terminObjednavky.prekryvaSa(termin);
+	}
+
 }

@@ -33,5 +33,11 @@ public class ObjednavkyNaDen {
 	public Collection<Objednavka> getObjednavky() {
 		return Collections.unmodifiableCollection( objednavky );
 	}
+
+	public boolean jeVolno(TerminObjednavky termin) {
+		return ! objednavky.stream()
+			.filter( objednavka -> objednavka.terminJeObsadeny(termin) )
+			.findAny().isPresent();
+	}
 	
 }
