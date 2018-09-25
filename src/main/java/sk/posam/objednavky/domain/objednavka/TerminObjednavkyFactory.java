@@ -9,7 +9,7 @@ import java.time.LocalTime;
  */
 public final class TerminObjednavkyFactory {
 	
-	private final static Duration STANDARDNA_DLZKA_OBJEDNAVKY_V_MINUTACH = Duration.ofMinutes( 29 );
+	private final static Duration STANDARDNA_DLZKA_OBJEDNAVKY_V_MINUTACH = Duration.ofMinutes( 30 );
 
 	/**
 	 * Metóda vytvorí termín objednávky pre danú hodinu a minútu
@@ -19,7 +19,22 @@ public final class TerminObjednavkyFactory {
 		return new TerminObjednavky( LocalTime.of(hodina, minuta), STANDARDNA_DLZKA_OBJEDNAVKY_V_MINUTACH );
 	}
 	
+	/**
+	 * Pre daný termín objednávky vytvorí nasledujúci termín
+	 * v nasledujúcom časovom intervale.
+	 */
+	public static TerminObjednavky createNext(TerminObjednavky result) {
+		LocalTime cas = result.getCas();
+		cas = cas.plus( STANDARDNA_DLZKA_OBJEDNAVKY_V_MINUTACH );
+		return new TerminObjednavky( cas, STANDARDNA_DLZKA_OBJEDNAVKY_V_MINUTACH );
+	}
+
 	private TerminObjednavkyFactory() {
 		// Na čo je tu tento konštruktor?
 	}
+
+	public static TerminObjednavky createZaciatokDna() {
+		return new TerminObjednavky( LocalTime.of( 8, 0 ), STANDARDNA_DLZKA_OBJEDNAVKY_V_MINUTACH );
+	}
+
 }

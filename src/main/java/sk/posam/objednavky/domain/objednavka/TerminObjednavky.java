@@ -36,5 +36,5 @@ public class TerminObjednavky {
 		// https://stackoverflow.com/a/17107966/146745
 		return cas1Zaciatok.isBefore(cas2Koniec) && cas2Zaciatok.isBefore(cas1Koniec);
 	}
-	
+
 }
