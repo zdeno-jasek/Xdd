@@ -37,13 +37,13 @@ public class ObjednavkyRestService {
 	// http://localhost:8080/objednavka/dnes
 	@RequestMapping(method=RequestMethod.GET, value="dnes")
 	public ObjednavkyNaDen dnesneObjednavky() {
-		return repository.findByDen( LocalDate.now() );
+		return repository.findByDatum( LocalDate.now() );
 	}
 
 	// http://localhost:8080/objednavka/volno?hodina=5&minuta=6
 	@RequestMapping(method=RequestMethod.GET, value="volno")
 	public boolean jeVolno( int hodina, int minuta ) {
-		ObjednavkyNaDen objednavkyNaDen = repository.findByDen( LocalDate.now() );
+		ObjednavkyNaDen objednavkyNaDen = repository.findByDatum( LocalDate.now() );
 		TerminObjednavky termin = TerminObjednavkyFactory.create(hodina, minuta);
 		return objednavkyNaDen.jeVolno(termin);
 	}
@@ -58,7 +58,7 @@ public class ObjednavkyRestService {
 	@RequestMapping(method=RequestMethod.GET, value="objednanyKedy")
 	public LocalTime kedyJeObjednany( String meno, String priezvisko ) {
 		final Osoba osoba = new Osoba( meno, priezvisko );
-		ObjednavkyNaDen objednavky = repository.findByDen( LocalDate.now() );
+		ObjednavkyNaDen objednavky = repository.findByDatum( LocalDate.now() );
 	 	Optional<Objednavka> objednavka = objednavky.najdiOsobu( osoba );
 		return objednavka.isPresent() ? objednavka.get().getTerminObjednavky().getCas() : null;
 	}
@@ -70,7 +70,7 @@ public class ObjednavkyRestService {
 		final LocalDate den = LocalDate.now();
 		Objednavka result;
 		
-		ObjednavkyNaDen objednavky = repository.findByDen( den );
+		ObjednavkyNaDen objednavky = repository.findByDatum( den );
 		if ( objednavky == null ) {
 			objednavky = new ObjednavkyNaDen( den );
 			result = objednavky.objednaj( osoba );

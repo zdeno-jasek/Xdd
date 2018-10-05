@@ -20,19 +20,19 @@ public class ObjednavkyNaDenRepositoryInMemoryTest {
 	
 	@Test
 	public void testPrvyDenJeObjednany() {
-		ObjednavkyNaDen objednavky = repository.findByDen( LocalDate.now() );
+		ObjednavkyNaDen objednavky = repository.findByDatum( LocalDate.now() );
 		assertNotNull(objednavky);
 	}
 
 	@Test
 	public void testDruhyDenJeObjednany() {
-		ObjednavkyNaDen objednavky = repository.findByDen( LocalDate.now().plusDays( 1 ) );
+		ObjednavkyNaDen objednavky = repository.findByDatum( LocalDate.now().plusDays( 1 ) );
 		assertNotNull(objednavky);
 	}
 
 	@Test
 	public void testVceraNieJeObjednanyNikto() {
-		ObjednavkyNaDen objednavky = repository.findByDen( LocalDate.now().plusDays( -1 ) );
+		ObjednavkyNaDen objednavky = repository.findByDatum( LocalDate.now().plusDays( -1 ) );
 		assertNull(objednavky);
 	}
 

@@ -36,7 +36,7 @@ final class ObjednavkyNaDenRepositoryInMemory implements ObjednavkyNaDenReposito
 	}
 
 	@Override
-	public ObjednavkyNaDen findByDen( LocalDate den) {
+	public ObjednavkyNaDen findByDatum( LocalDate den) {
 		return vsetkyObjednavky.stream()
 			.filter( objednavka -> objednavka.getDatum().equals(den) )
 			.findFirst()

@@ -11,7 +11,7 @@ public interface ObjednavkyNaDenRepository {
 	/**
 	 * Metóda vráti objednávku na daný deň.
 	 */
-	ObjednavkyNaDen findByDen( LocalDate den );
+	ObjednavkyNaDen findByDatum( LocalDate den );
 
 	/**
 	 * Metóda zapíše aktulizovanú objednávku do zoznamu.
